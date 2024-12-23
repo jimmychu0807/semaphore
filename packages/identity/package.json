@@ -11,6 +11,9 @@
         "require": "./dist/index.cjs",
         "default": "./dist/index.js"
     },
+    "bin": {
+        "semaphore-identity": "dist/cli.js"
+    },
     "files": [
         "dist/",
         "src/",
