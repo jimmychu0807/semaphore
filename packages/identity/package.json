@@ -35,7 +35,8 @@
     "scripts": {
         "build": "rimraf dist && rollup -c rollup.config.ts --configPlugin typescript",
         "cli": "tsx src/cli.ts",
-        "prepublishOnly": "yarn build"
+        "prepublishOnly": "yarn build",
+        "prepare": "yarn build"
     },
     "publishConfig": {
         "access": "public"
