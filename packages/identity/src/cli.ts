@@ -11,7 +11,7 @@ program
         if (!secretKey) throw new Error("Secret key can't be empty")
 
         const identity = new Identity(secretKey)
-        console.log(identity.publicKey)
+        console.log(`${identity.publicKey[0]} ${identity.publicKey[1]}`)
     })
 
 program.parse(process.argv)
