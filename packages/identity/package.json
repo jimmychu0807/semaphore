@@ -24,6 +24,10 @@
     "files": [
         "dist/",
         "src/",
+        "package.json",
+        "rollup.config.ts",
+        "tsconfig.json",
+        "typedoc.json",
         "LICENSE",
         "README.md"
     ],
@@ -35,8 +39,7 @@
     "scripts": {
         "build": "rimraf dist && rollup -c rollup.config.ts --configPlugin typescript",
         "cli": "tsx src/cli.ts",
-        "prepublishOnly": "yarn build",
-        "prepare": "yarn build"
+        "prepublishOnly": "yarn build"
     },
     "publishConfig": {
         "access": "public"
