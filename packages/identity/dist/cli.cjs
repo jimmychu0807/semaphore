@@ -38,22 +38,32 @@ commander.program
 });
 commander.program
     .command("verify")
-    .argument("[secret-key]", "Secret Key")
+    .argument("[public-key]", "Public Key")
     .argument("[message]", "Message")
     .argument("[signature]", "Signature")
     .allowExcessArguments(false)
-    .action(async (secretKey, message, signature) => {
-    if (!secretKey || !message || !signature) {
-        throw new Error("Requires three parameters, `secretKey` and `message` to be filled.");
-    }
-    const identity = new index.Identity(secretKey);
+    .action(async (publicKey, message, signature) => {
+    if (!publicKey || !message || !signature)
+        throw new Error("Requires three parameters, `publicKey`, `message`, and `signature` to be filled.");
+    // 32 bytes * 2 * 2 + 2 = 130
+    if (publicKey.length != 130)
+        throw new Error("publicKey is not 64-byte long");
+    // 32 bytes * 3 * 2 + 2 = 194
+    if (signature.length != 194)
+        throw new Error("publicKey is not 96-byte long");
     const bigIntMsg = BigInt(message);
-    const signArr = signature.split(" ");
+    // converting public key
+    const pkX = BigInt(`0x${publicKey.slice(2, 66)}`);
+    const pkY = BigInt(`0x${publicKey.slice(66)}`);
+    // converting signature to object
+    const s0 = BigInt(`0x${signature.slice(2, 66)}`);
+    const s1 = BigInt(`0x${signature.slice(66, 130)}`);
+    const s2 = BigInt(`0x${signature.slice(130)}`);
     const signObj = {
-        R8: [signArr[0], signArr[1]],
-        S: signArr[2]
+        R8: [s0, s1],
+        S: s2
     };
-    const res = index.Identity.verifySignature(bigIntMsg, signObj, identity.publicKey);
+    const res = index.Identity.verifySignature(bigIntMsg, signObj, [pkX, pkY]);
     console.log(res);
 });
 commander.program.parse(process.argv);
