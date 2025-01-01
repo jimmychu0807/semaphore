@@ -2,7 +2,7 @@
  * @module @semaphore-protocol/identity
  * @version 4.8.2
  * @file A library to create Semaphore identities.
- * @copyright Ethereum Foundation 2024
+ * @copyright Ethereum Foundation 2025
  * @license MIT
  * @see [Github]{@link https://github.com/semaphore-protocol/semaphore/tree/main/packages/identity}
 */
@@ -21,6 +21,16 @@ commander.program
         throw new Error("Secret key can't be empty");
     const identity = new index.Identity(secretKey);
     console.log(`${identity.publicKey[0]} ${identity.publicKey[1]}`);
+});
+commander.program
+    .command("get-commitment")
+    .argument("[secret-key]", "Secret Key")
+    .allowExcessArguments(false)
+    .action(async (secretKey) => {
+    if (!secretKey)
+        throw new Error("Secret key can't be empty");
+    const identity = new index.Identity(secretKey);
+    console.log(`${identity.commitment}`);
 });
 commander.program
     .command("sign")

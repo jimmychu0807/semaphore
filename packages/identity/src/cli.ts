@@ -16,6 +16,16 @@ program
     })
 
 program
+    .command("get-commitment")
+    .argument("[secret-key]", "Secret Key")
+    .allowExcessArguments(false)
+    .action(async (secretKey: string) => {
+        if (!secretKey) throw new Error("Secret key can't be empty")
+        const identity = new Identity(secretKey)
+        console.log(`${identity.commitment}`)
+    })
+
+program
     .command("sign")
     .argument("[secret-key]", "Secret Key")
     .argument("[message]", "Message")
