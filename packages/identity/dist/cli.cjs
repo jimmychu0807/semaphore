@@ -30,7 +30,8 @@ commander.program
     if (!secretKey)
         throw new Error("Secret key can't be empty");
     const identity = new index.Identity(secretKey);
-    console.log(`${identity.commitment}`);
+    // We want to encode it to hex value because vm.ffi() in foundry read this value as hex-encoded value
+    console.log(`${identity.commitment.toString(16)}`);
 });
 commander.program
     .command("sign")
