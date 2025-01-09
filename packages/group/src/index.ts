@@ -1,4 +1,5 @@
-import { LeanIMT, LeanIMTMerkleProof } from "@zk-kit/lean-imt"
+import { LeanIMT } from "@zk-kit/lean-imt"
+import type { LeanIMTMerkleProof } from "@zk-kit/lean-imt"
 import type { BigNumber } from "@zk-kit/utils"
 import { poseidon2 } from "poseidon-lite/poseidon2"
 

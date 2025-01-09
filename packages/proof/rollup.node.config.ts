@@ -14,19 +14,21 @@ const banner = `/**
 */`
 
 export default {
-    input: "src/index.ts",
+    // input: "src/index.ts",
+    input: ["src/index.ts", "src/cli.ts"],
     output: [
-        {
-            file: pkg.exports["."].node.require,
-            format: "cjs",
-            banner,
-            exports: "auto"
-        },
-        {
-            file: pkg.exports["."].node.default,
-            format: "es",
-            banner
-        }
+        // {
+        //     file: pkg.exports["."].node.require,
+        //     format: "cjs",
+        //     banner,
+        //     exports: "auto"
+        // },
+        // {
+        //     file: pkg.exports["."].node.default,
+        //     format: "es",
+        //     banner
+        // }
+        { dir: "dist", format: "es", banner, preserveModules: true }
     ],
     external: [
         ...Object.keys(pkg.dependencies),
