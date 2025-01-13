@@ -28,6 +28,7 @@ export default {
         //     format: "es",
         //     banner
         // }
+        { dir: "dist", format: "cjs", banner, preserveModules: true, entryFileNames: "[name].cjs" },
         { dir: "dist", format: "es", banner, preserveModules: true }
     ],
     external: [

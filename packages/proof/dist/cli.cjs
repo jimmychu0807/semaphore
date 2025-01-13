@@ -6,19 +6,21 @@
  * @license MIT
  * @see [Github]{@link https://github.com/semaphore-protocol/semaphore/tree/main/packages/proof}
 */
-import { program } from 'commander';
-import { Identity } from '@semaphore-protocol/identity';
-import { Group } from '@semaphore-protocol/group';
-import '@zk-kit/utils/proof-packing';
-import generateProof from './generate-proof.js';
-import '@semaphore-protocol/utils/constants';
-import '@zk-kit/utils/error-handlers';
-import 'snarkjs';
-import 'ethers/crypto';
-import 'ethers/utils';
+'use strict';
 
-program.name("semaphore-proof");
-program
+var commander = require('commander');
+var identity = require('@semaphore-protocol/identity');
+var group = require('@semaphore-protocol/group');
+require('@zk-kit/utils/proof-packing');
+var generateProof = require('./generate-proof.cjs');
+require('@semaphore-protocol/utils/constants');
+require('@zk-kit/utils/error-handlers');
+require('snarkjs');
+require('ethers/crypto');
+require('ethers/utils');
+
+commander.program.name("semaphore-proof");
+commander.program
     .command("gen-proof")
     .argument("[secret-key]", "Secret Key")
     .argument("[members]", "Members")
@@ -28,11 +30,11 @@ program
     .action(async (secretKey, members, gid, message) => {
     if (!secretKey)
         throw new Error("Secret key can't be empty");
-    const identity = new Identity(secretKey);
-    const proof = await generateProof(identity, new Group(members.split(",")), message, gid);
+    const identity$1 = new identity.Identity(secretKey);
+    const proof = await generateProof(identity$1, new group.Group(members.split(",")), message, gid);
     console.log(JSON.stringify(proof));
     process.exit(0);
 });
-program.parseAsync(process.argv)
+commander.program.parseAsync(process.argv)
     .then(() => { })
     .catch((err) => console.error(err));

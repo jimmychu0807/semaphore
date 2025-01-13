@@ -23,4 +23,6 @@ program
         process.exit(0)
     })
 
-await program.parseAsync(process.argv)
+program.parseAsync(process.argv)
+    .then(() => {})
+    .catch((err) => console.error(err))

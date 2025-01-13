@@ -10,6 +10,7 @@
         ".": {
             "types": "./dist/types/index.d.ts",
             "node": {
+                "require": "./dist/index.cjs",
                 "default": "./dist/index.js"
             },
             "browser": "./dist/index.browser.js",
@@ -17,6 +18,7 @@
         },
         "./cli": {
             "types": "./dist/types/cli.d.ts",
+            "require": "./dist/cli.cjs",
             "default": "./dist/cli.js"
         }
     },
