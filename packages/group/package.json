@@ -7,9 +7,19 @@
     "main": "dist/index.js",
     "types": "dist/types/index.d.ts",
     "exports": {
-        "types": "./dist/types/index.d.ts",
-        "require": "./dist/index.cjs",
-        "default": "./dist/index.js"
+        ".": {
+            "types": "./dist/types/index.d.ts",
+            "require": "./dist/index.cjs",
+            "default": "./dist/index.js"
+        },
+        "./cli": {
+            "types": "./dist/types/cli.d.ts",
+            "require": "./dist/cli.cjs",
+            "default": "./dist/cli.js"
+        }
+    },
+    "bin": {
+        "semaphore-group": "dist/cli.js"
     },
     "files": [
         "dist/",
@@ -24,6 +34,7 @@
     },
     "scripts": {
         "build": "rimraf dist && rollup -c rollup.config.ts --configPlugin typescript",
+        "cli": "tsx src/cli.ts",
         "prepublishOnly": "yarn build"
     },
     "publishConfig": {
@@ -33,11 +44,13 @@
         "@rollup/plugin-typescript": "^11.1.6",
         "rimraf": "^5.0.5",
         "rollup": "^4.12.0",
-        "rollup-plugin-cleanup": "^3.2.1"
+        "rollup-plugin-cleanup": "^3.2.1",
+        "tsx": "^4.19.2"
     },
     "dependencies": {
         "@zk-kit/lean-imt": "2.2.2",
         "@zk-kit/utils": "1.2.1",
+        "commander": "^12.0.0",
         "poseidon-lite": "0.3.0"
     }
 }

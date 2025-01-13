@@ -13,10 +13,12 @@ const banner = `/**
 */`
 
 export default {
-    input: "src/index.ts",
+    input: ["src/index.ts", "src/cli.ts"],
     output: [
-        { file: pkg.exports.require, format: "cjs", banner, exports: "auto" },
-        { file: pkg.exports.default, format: "es", banner }
+        // { file: pkg.exports.require, format: "cjs", banner, exports: "auto" },
+        // { file: pkg.exports.default, format: "es", banner }
+        { dir: "dist", format: "cjs", banner, preserveModules: true, entryFileNames: "[name].cjs" },
+        { dir: "dist", format: "es", banner, preserveModules: true }
     ],
     external: [...Object.keys(pkg.dependencies), "poseidon-lite/poseidon2"],
     plugins: [
