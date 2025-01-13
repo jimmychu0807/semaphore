@@ -17,17 +17,6 @@ export default {
     // input: "src/index.ts",
     input: ["src/index.ts", "src/cli.ts"],
     output: [
-        // {
-        //     file: pkg.exports["."].node.require,
-        //     format: "cjs",
-        //     banner,
-        //     exports: "auto"
-        // },
-        // {
-        //     file: pkg.exports["."].node.default,
-        //     format: "es",
-        //     banner
-        // }
         { dir: "dist", format: "cjs", banner, preserveModules: true, entryFileNames: "[name].cjs" },
         { dir: "dist", format: "es", banner, preserveModules: true }
     ],
