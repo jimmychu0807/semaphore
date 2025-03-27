@@ -24,15 +24,23 @@
         "done": true
     },
     {
-        "name": "Documentation improvements",
-        "done": false
-    },
-    {
         "name": "New Explorer",
+        "done": true
+    },
+    {
+        "name": "Semaphore V4 Specification",
+        "done": true
+    },
+    {
+        "name": "Semaphore Rust Implementation",
         "done": false
     },
     {
-        "name": "RLN extension",
+        "name": "Semaphore Noir Implementation",
+        "done": false
+    },
+    {
+        "name": "Scaling Semaphore with PIR",
         "done": false
     }
 ]
