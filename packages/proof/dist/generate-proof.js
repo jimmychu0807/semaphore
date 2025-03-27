@@ -1,6 +1,6 @@
 /**
  * @module @semaphore-protocol/proof
- * @version 4.8.2
+ * @version 4.9.1
  * @file A library to generate and verify Semaphore proofs.
  * @copyright Ethereum Foundation 2025
  * @license MIT

@@ -5,8 +5,8 @@ program.name("semaphore-group")
 
 program
     .command("remove-member")
-    .argument("[members]", "Members")
-    .argument("[removal]", "Removal member")
+    .argument("<members>", "Members")
+    .argument("<removal>", "Removal member")
     .allowExcessArguments(false)
     .action((membersStr: string, removalStr: string) => {
         const members = membersStr.split(",").map(BigInt)

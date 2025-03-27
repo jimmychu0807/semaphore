@@ -1,6 +1,6 @@
 /**
  * @module @semaphore-protocol/identity
- * @version 4.8.2
+ * @version 4.9.1
  * @file A library to create Semaphore identities.
  * @copyright Ethereum Foundation 2025
  * @license MIT

@@ -6,7 +6,7 @@ program.name("semaphore-identity")
 
 program
     .command("get-public-key")
-    .argument("[secret-key]", "Secret Key")
+    .argument("<secret-key>", "Secret Key")
     .allowExcessArguments(false)
     .action((secretKey: string) => {
         if (!secretKey) throw new Error("Secret key can't be empty")
@@ -16,7 +16,7 @@ program
 
 program
     .command("get-commitment")
-    .argument("[secret-key]", "Secret Key")
+    .argument("<secret-key>", "Secret Key")
     .allowExcessArguments(false)
     .action((secretKey: string) => {
         if (!secretKey) throw new Error("Secret key can't be empty")
@@ -27,8 +27,8 @@ program
 
 program
     .command("sign")
-    .argument("[secret-key]", "Secret Key")
-    .argument("[message]", "Message")
+    .argument("<secret-key>", "Secret Key")
+    .argument("<message>", "Message")
     .allowExcessArguments(false)
     .action((secretKey: string, message: string) => {
         if (!secretKey || !message) {
@@ -42,9 +42,9 @@ program
 
 program
     .command("verify")
-    .argument("[public-key]", "Public Key")
-    .argument("[message]", "Message")
-    .argument("[signature]", "Signature")
+    .argument("<public-key>", "Public Key")
+    .argument("<message>", "Message")
+    .argument("<signature>", "Signature")
     .allowExcessArguments(false)
     .action((publicKey: string, message: string, signature: string) => {
         if (!publicKey || !message || !signature)

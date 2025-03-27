@@ -1,6 +1,6 @@
 /**
  * @module @semaphore-protocol/group
- * @version 4.8.2
+ * @version 4.9.1
  * @file A library to create and manage Semaphore groups.
  * @copyright Ethereum Foundation 2025
  * @license MIT
@@ -14,8 +14,8 @@ var index = require('./index.cjs');
 commander.program.name("semaphore-group");
 commander.program
     .command("remove-member")
-    .argument("[members]", "Members")
-    .argument("[removal]", "Removal member")
+    .argument("<members>", "Members")
+    .argument("<removal>", "Removal member")
     .allowExcessArguments(false)
     .action((membersStr, removalStr) => {
     const members = membersStr.split(",").map(BigInt);

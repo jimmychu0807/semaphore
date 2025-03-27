@@ -1,6 +1,6 @@
 /**
  * @module @semaphore-protocol/identity
- * @version 4.8.2
+ * @version 4.9.1
  * @file A library to create Semaphore identities.
  * @copyright Ethereum Foundation 2025
  * @license MIT
@@ -14,7 +14,7 @@ var index = require('./index.cjs');
 commander.program.name("semaphore-identity");
 commander.program
     .command("get-public-key")
-    .argument("[secret-key]", "Secret Key")
+    .argument("<secret-key>", "Secret Key")
     .allowExcessArguments(false)
     .action((secretKey) => {
     if (!secretKey)
@@ -24,7 +24,7 @@ commander.program
 });
 commander.program
     .command("get-commitment")
-    .argument("[secret-key]", "Secret Key")
+    .argument("<secret-key>", "Secret Key")
     .allowExcessArguments(false)
     .action((secretKey) => {
     if (!secretKey)
@@ -35,8 +35,8 @@ commander.program
 });
 commander.program
     .command("sign")
-    .argument("[secret-key]", "Secret Key")
-    .argument("[message]", "Message")
+    .argument("<secret-key>", "Secret Key")
+    .argument("<message>", "Message")
     .allowExcessArguments(false)
     .action((secretKey, message) => {
     if (!secretKey || !message) {
@@ -49,18 +49,18 @@ commander.program
 });
 commander.program
     .command("verify")
-    .argument("[public-key]", "Public Key")
-    .argument("[message]", "Message")
-    .argument("[signature]", "Signature")
+    .argument("<public-key>", "Public Key")
+    .argument("<message>", "Message")
+    .argument("<signature>", "Signature")
     .allowExcessArguments(false)
     .action((publicKey, message, signature) => {
     if (!publicKey || !message || !signature)
         throw new Error("Requires three parameters, `publicKey`, `message`, and `signature` to be filled.");
     // 32 bytes * 2 * 2 + 2 = 130
-    if (publicKey.length != 130)
+    if (publicKey.length !== 130)
         throw new Error("publicKey is not 64-byte long");
     // 32 bytes * 3 * 2 + 2 = 194
-    if (signature.length != 194)
+    if (signature.length !== 194)
         throw new Error("publicKey is not 96-byte long");
     const bigIntMsg = BigInt(message);
     // converting public key
