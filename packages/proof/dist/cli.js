@@ -20,16 +20,16 @@ import 'ethers/utils';
 program.name("semaphore-proof");
 program
     .command("gen-proof")
-    .argument("[secret-key]", "Secret Key")
-    .argument("[members]", "Members")
-    .argument("[gid]", "Group Id")
-    .argument("[message]", "Message")
+    .argument("<secret-key>", "Secret Key")
+    .argument("<members>", "Members")
+    .argument("<scope>", "Scope")
+    .argument("<message>", "Message")
     .allowExcessArguments(false)
-    .action(async (secretKey, members, gid, message) => {
+    .action(async (secretKey, members, scope, message) => {
     if (!secretKey)
         throw new Error("Secret key can't be empty");
     const identity = new Identity(secretKey);
-    const proof = await generateProof(identity, new Group(members.split(",")), message, gid);
+    const proof = await generateProof(identity, new Group(members.split(",")), message, scope);
     console.log(JSON.stringify(proof));
     process.exit(0);
 });
